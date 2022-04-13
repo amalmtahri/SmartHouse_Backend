@@ -1,33 +1,25 @@
 package com.app.smarthouse.model;
 
-
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+
+import java.util.Collection;
 
 @Document
-@AllArgsConstructor
 @Builder
 @Getter
 @Setter
-public class User {
+public class Room {
 
     @Id
     private String id;
-    @Field(value = "username")
-    private String username;
-    @Field(value = "password")
-    private String password;
+    private Long number;
     @DBRef
-    private House house;
-
-    public User() {
-    }
-
-
+    private Collection<Device> devices;
+    @DBRef
+    private Floor floor;
 }
