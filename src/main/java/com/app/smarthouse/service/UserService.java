@@ -3,6 +3,7 @@ package com.app.smarthouse.service;
 import com.app.smarthouse.model.User;
 import com.app.smarthouse.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

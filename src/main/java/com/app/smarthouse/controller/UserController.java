@@ -3,6 +3,7 @@ package com.app.smarthouse.controller;
 import com.app.smarthouse.model.User;
 import com.app.smarthouse.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
