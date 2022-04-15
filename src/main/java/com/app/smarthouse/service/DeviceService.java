@@ -3,9 +3,11 @@ package com.app.smarthouse.service;
 import com.app.smarthouse.model.Device;
 import com.app.smarthouse.repository.DeviceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DeviceService {
 
     @Autowired
