@@ -25,7 +25,7 @@ public class HouseController {
         return houseService.addHouse(house);
     }
 
-    @GetMapping("/getOne")
+    @GetMapping("/getOne/{id}")
     public House getOne(@PathVariable String id){
         return houseService.getOne(id);
     }
@@ -35,8 +35,6 @@ public class HouseController {
         return houseService.updateHouse(house);
     }
 
-    @DeleteMapping("/delete")
-    public String deleteHouse(String id){
-        return houseService.deleteHouse(id);
-    }
+    @DeleteMapping("/delete/{id}")
+    public String deleteHouse(@PathVariable String id){return houseService.deleteHouse(id);}
 }

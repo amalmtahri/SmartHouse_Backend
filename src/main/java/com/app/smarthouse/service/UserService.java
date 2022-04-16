@@ -1,5 +1,6 @@
 package com.app.smarthouse.service;
 
+import com.app.smarthouse.model.House;
 import com.app.smarthouse.model.User;
 import com.app.smarthouse.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,9 @@ public class UserService {
 
     public User addUser(User user){
         return userRepository.save(user);
+    }
+
+    public User getOne(String id){
+        return userRepository.findById(id).orElse(null);
     }
 }

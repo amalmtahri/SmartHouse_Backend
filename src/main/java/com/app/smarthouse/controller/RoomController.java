@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/api/room")
 public class RoomController {
 
     @Autowired
@@ -23,14 +25,14 @@ public class RoomController {
         return roomService.addRoom(room);
     }
 
-    @GetMapping("/getOne")
+    @GetMapping("/getOne/{id}")
     public Room getOne(@PathVariable String id){return roomService.getOne(id);}
 
     @PutMapping("/update")
     public Room update(@RequestBody Room room){ return roomService.updateRoom(room);}
 
-    @DeleteMapping("/delete")
-    public String delete(String id){
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable String id){
         return roomService.deleteRoom(id);
     }
 }

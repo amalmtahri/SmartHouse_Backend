@@ -1,6 +1,8 @@
 package com.app.smarthouse.service;
 
+import com.app.smarthouse.model.Floor;
 import com.app.smarthouse.model.House;
+import com.app.smarthouse.model.User;
 import com.app.smarthouse.repository.HouseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,14 +15,23 @@ public class HouseService {
     @Autowired
     private HouseRepository houseRepository;
 
+    @Autowired
+    private UserService userService;
 
+    @Autowired
+    private FloorService floorService;
 
     public List<House> getAll(){
         return houseRepository.findAll();
     }
 
     public House addHouse(House house){
-        return houseRepository.save(house);
+        User getUserData = userService.getOne(house.getUser().getId());
+        if(getUserData != null){
+            house.setUser(getUserData);
+            houseRepository.save(house);
+        }
+        return house;
     }
 
     public House getOne(String id){

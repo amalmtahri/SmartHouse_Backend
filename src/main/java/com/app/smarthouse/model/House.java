@@ -17,11 +17,10 @@ public class House {
     private String id;
     private String name;
     private String address;
-    @DBRef
+    @DBRef(lazy = true)
     private Collection<Floor> floors;
     @DBRef
     private User user;
 
-    public House() {
-    }
+
 }

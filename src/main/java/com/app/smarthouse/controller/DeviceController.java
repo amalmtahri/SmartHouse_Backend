@@ -25,14 +25,14 @@ public class DeviceController {
         return deviceService.addDevice(device);
     }
 
-    @GetMapping("/getOne")
+    @GetMapping("/getOne/{id}")
     public Device getOne(@PathVariable String id){return deviceService.getOne(id);}
 
     @PutMapping("/update")
     public Device update(@RequestBody Device device){ return deviceService.updateDevice(device);}
 
-    @DeleteMapping("/delete")
-    public String delete(String id){
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable String id){
         return deviceService.deleteDevice(id);
     }
 }

@@ -20,6 +20,5 @@ public class Room {
     private Long number;
     @DBRef
     private Collection<Device> devices;
-    @DBRef
-    private Floor floor;
+
 }

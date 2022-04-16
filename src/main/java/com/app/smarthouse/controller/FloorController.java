@@ -25,7 +25,7 @@ public class FloorController {
         return floorService.addFloor(floor);
     }
 
-    @GetMapping("/getOne")
+    @GetMapping("/getOne/{id}")
     public Floor getOne(@PathVariable String id){return floorService.getOne(id);}
 
     @PutMapping("/update")
@@ -33,8 +33,8 @@ public class FloorController {
         return floorService.updateFloor(floor);
     }
 
-    @DeleteMapping("/delete")
-    public String delete(String id){
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable String id){
         return floorService.deleteFloor(id);
     }
 }

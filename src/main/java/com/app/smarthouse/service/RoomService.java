@@ -1,8 +1,6 @@
 package com.app.smarthouse.service;
 
-import com.app.smarthouse.model.Floor;
 import com.app.smarthouse.model.Room;
-import com.app.smarthouse.repository.FloorRepository;
 import com.app.smarthouse.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +36,6 @@ public class RoomService {
 
     public String deleteRoom(String id) {
         roomRepository.deleteById(id);
-        return "Floor removed !!";
+        return "Room removed !!";
     }
 }

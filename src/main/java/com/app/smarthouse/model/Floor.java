@@ -20,10 +20,6 @@ public class Floor {
     private String id;
     private Long number;
     @DBRef
-    private House house;
-    @DBRef
     private Collection<Room> rooms;
 
-    public Floor() {
-    }
 }
