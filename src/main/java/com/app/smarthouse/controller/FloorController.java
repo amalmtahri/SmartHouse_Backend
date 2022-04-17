@@ -1,7 +1,7 @@
 package com.app.smarthouse.controller;
 
 import com.app.smarthouse.model.Floor;
-import com.app.smarthouse.service.FloorService;
+import com.app.smarthouse.service.impl.FloorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

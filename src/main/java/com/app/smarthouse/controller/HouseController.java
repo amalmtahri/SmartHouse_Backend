@@ -1,7 +1,7 @@
 package com.app.smarthouse.controller;
 
 import com.app.smarthouse.model.House;
-import com.app.smarthouse.service.HouseService;
+import com.app.smarthouse.service.impl.HouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

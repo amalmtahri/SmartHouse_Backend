@@ -1,16 +1,16 @@
-package com.app.smarthouse.service;
+package com.app.smarthouse.service.impl;
 
-import com.app.smarthouse.model.Floor;
 import com.app.smarthouse.model.House;
 import com.app.smarthouse.model.User;
 import com.app.smarthouse.repository.HouseRepository;
+import com.app.smarthouse.service.interfaces.IHouseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class HouseService {
+public class HouseService implements IHouseService {
 
     @Autowired
     private HouseRepository houseRepository;
@@ -21,10 +21,12 @@ public class HouseService {
     @Autowired
     private FloorService floorService;
 
+    @Override
     public List<House> getAll(){
         return houseRepository.findAll();
     }
 
+    @Override
     public House addHouse(House house){
         User getUserData = userService.getOne(house.getUser().getId());
         if(getUserData != null){
@@ -34,10 +36,12 @@ public class HouseService {
         return house;
     }
 
+    @Override
     public House getOne(String id){
         return houseRepository.findById(id).orElse(null);
     }
 
+    @Override
     public House updateHouse(House house){
         House house1 = houseRepository.findById(house.getId()).orElse(null);
         if(house1 != null){
@@ -46,6 +50,7 @@ public class HouseService {
         return null;
     }
 
+    @Override
     public String deleteHouse(String id) {
         houseRepository.deleteById(id);
         return "House removed !!";

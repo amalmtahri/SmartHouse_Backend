@@ -1,33 +1,33 @@
-package com.app.smarthouse.service;
+package com.app.smarthouse.service.impl;
 
 import com.app.smarthouse.model.Floor;
-import com.app.smarthouse.model.House;
 import com.app.smarthouse.repository.FloorRepository;
-import com.app.smarthouse.repository.HouseRepository;
+import com.app.smarthouse.service.interfaces.IFloorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class FloorService {
+public class FloorService implements IFloorService {
 
     @Autowired
     private FloorRepository floorRepository;
 
-
+    @Override
     public List<Floor> getAll(){
         return floorRepository.findAll();
     }
 
+    @Override
     public Floor addFloor(Floor floor){
         return floorRepository.save(floor);
     }
 
-    public Floor getOne(String id){
-        return floorRepository.findById(id).orElse(null);
-    }
+    @Override
+    public Floor getOne(String id){ return floorRepository.findById(id).orElse(null);}
 
+    @Override
     public Floor updateFloor(Floor floor){
         Floor floor1 = floorRepository.findById(floor.getId()).orElse(null);
         if(floor1 != null){
@@ -36,6 +36,7 @@ public class FloorService {
         return null;
     }
 
+    @Override
     public String deleteFloor(String id) {
         floorRepository.deleteById(id);
         return "Floor removed !!";
