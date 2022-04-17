@@ -9,6 +9,7 @@ import java.util.Collection;
 
 @Document
 @Builder
+@AllArgsConstructor
 @Getter
 @Setter
 public class House {

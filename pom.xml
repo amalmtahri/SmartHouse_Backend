@@ -55,6 +55,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>smartHouse</finalName>
     </build>
 
 </project>
