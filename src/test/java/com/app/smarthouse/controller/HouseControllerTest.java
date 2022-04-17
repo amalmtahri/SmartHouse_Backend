@@ -17,8 +17,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(HouseController.class)
@@ -53,18 +52,37 @@ class HouseControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(house1)))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void getOne() throws Exception {
+        House house1 = new House("12OZUEIEII","HOUSE1","safi",null,null);
+        when(houseService.getOne(house1.getId())).thenReturn(house1);
+        mockMvc.perform(get("/api/house/getOne/" + house1.getId())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void updateHouse() throws Exception {
+        House house1 = new House("12OZUEIEII","HOUSE1","safi",null,null);
+        when(houseService.updateHouse(house1))
+                .thenReturn(house1);
+        mockMvc.perform(post("/api/house/update")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(new ObjectMapper().writeValueAsString(house1)))
+                .andExpect(status().isOk());
 
     }
 
     @Test
-    void getOne() {
+    void deleteHouse() throws Exception {
+        House house1 = new House("12OZUEIEII","HOUSE1","safi",null,null);
+        when(houseService.getOne(house1.getId())).thenReturn(house1);
+        mockMvc.perform(delete("/api/house/delete/" + house1.getId())
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+
     }
 
-    @Test
-    void updateHouse() {
-    }
-
-    @Test
-    void deleteHouse() {
-    }
 }
