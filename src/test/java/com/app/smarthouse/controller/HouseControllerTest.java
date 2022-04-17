@@ -40,7 +40,6 @@ class HouseControllerTest {
         when(houseService.getAll()).thenReturn(houses);
         mockMvc.perform(get("/api/house/getAll"))
                 .andExpect(status().isOk());
-
     }
 
     @Test
