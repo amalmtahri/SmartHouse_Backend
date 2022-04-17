@@ -68,7 +68,7 @@ class HouseControllerTest {
         House house1 = new House("12OZUEIEII","HOUSE1","safi",null,null);
         when(houseService.updateHouse(house1))
                 .thenReturn(house1);
-        mockMvc.perform(post("/api/house/update")
+        mockMvc.perform(put("/api/house/update")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(house1)))
                 .andExpect(status().isOk());
