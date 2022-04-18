@@ -47,6 +47,14 @@ class FloorServiceTest {
         verify(floorRepository).findAll();
     }
 
+    @Test
+    void addFloor() {
+        Floor floor1 = new Floor("12OZUEIEII", 1L,null,null);
+        Mockito.lenient().when(floorRepository.save(floor1)).thenReturn(floor1);
+        Floor floor = floorService.addFloor(floor1);
+        assertThat(floor).isEqualTo(floor1);
+
+    }
 
     @Test
     void getOne() {
