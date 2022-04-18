@@ -2,6 +2,7 @@ package com.app.smarthouse.service.impl;
 
 import com.app.smarthouse.model.House;
 import com.app.smarthouse.repository.HouseRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
@@ -22,7 +23,6 @@ import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 @RunWith(MockitoJUnitRunner.Silent.class)
-
 class HouseServiceTest {
 
     @InjectMocks
@@ -30,6 +30,14 @@ class HouseServiceTest {
 
     @Mock
     private HouseRepository houseRepository;
+
+    @Mock
+    private UserService userService;
+
+    @BeforeEach
+    void setUp(){
+        houseService = new HouseService(houseRepository,userService);
+    }
 
     @Test
     void getAll() {
@@ -47,6 +55,11 @@ class HouseServiceTest {
 
     @Test
     void addHouse() {
+        House house1 = new House("12OZUEIEII","HOUSE1","safi",null,null);
+        Mockito.lenient().when(houseRepository.save(house1)).thenReturn(house1);
+        //House house = houseService.addHouse(house1);
+        //assertThat(house).isEqualTo(house1);
+
     }
 
     @Test
@@ -60,9 +73,19 @@ class HouseServiceTest {
 
     @Test
     void updateHouse() {
+        House house1 = new House("12OZUEIEII","HOUSE1","safi",null,null);
+        Mockito.lenient().when(houseRepository.findById(house1.getId())).thenReturn(Optional.of(house1));
+        Mockito.lenient().when(houseRepository.save(house1)).thenReturn(house1);
+        House house = houseService.updateHouse(house1);
+        assertThat(house).isEqualTo(house1);
+
     }
 
     @Test
     void deleteHouse() {
+        House house1 = new House("12OZUEIEII","HOUSE1","safi",null,null);
+        Mockito.lenient().when(houseRepository.findById(house1.getId())).thenReturn(Optional.of(house1));
+        houseService.deleteHouse(house1.getId());
+
     }
 }

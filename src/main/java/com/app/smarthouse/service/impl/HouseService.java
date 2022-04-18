@@ -4,12 +4,14 @@ import com.app.smarthouse.model.House;
 import com.app.smarthouse.model.User;
 import com.app.smarthouse.repository.HouseRepository;
 import com.app.smarthouse.service.interfaces.IHouseService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class HouseService implements IHouseService {
 
     @Autowired
@@ -18,8 +20,7 @@ public class HouseService implements IHouseService {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private FloorService floorService;
+
 
     @Override
     public List<House> getAll(){
