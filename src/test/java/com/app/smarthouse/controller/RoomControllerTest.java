@@ -33,8 +33,8 @@ class RoomControllerTest {
 
     @Test
     void getAll() throws Exception {
-        Room room1 = new Room("12OZUEIEII",2L,null);
-        Room room2 = new Room("ZERT456",7L,null);
+        Room room1 = new Room("12OZUEIEII",2L,null,null);
+        Room room2 = new Room("ZERT456",7L,null,null);
 
         List<Room> rooms = new ArrayList<>();
         rooms.add(room1);
@@ -46,7 +46,7 @@ class RoomControllerTest {
 
     @Test
     void add() throws Exception {
-        Room room1 = new Room("12OZUEIEII",2L,null);
+        Room room1 = new Room("12OZUEIEII",2L,null,null);
         when(roomService.addRoom(room1))
                 .thenReturn(room1);
         mockMvc.perform(post("/api/room/add")
@@ -57,7 +57,7 @@ class RoomControllerTest {
 
     @Test
     void getOne() throws Exception {
-        Room room1 = new Room("12OZUEIEII",2L,null);
+        Room room1 = new Room("12OZUEIEII",2L,null,null);
         when(roomService.getOne(room1.getId())).thenReturn(room1);
         mockMvc.perform(get("/api/room/getOne/" + room1.getId())
                         .contentType(MediaType.APPLICATION_JSON))
@@ -66,7 +66,7 @@ class RoomControllerTest {
 
     @Test
     void update() throws Exception {
-        Room room1 = new Room("12OZUEIEII",2L,null);
+        Room room1 = new Room("12OZUEIEII",2L,null,null);
         when(roomService.updateRoom(room1))
                 .thenReturn(room1);
         mockMvc.perform(put("/api/room/update")

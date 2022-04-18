@@ -21,6 +21,8 @@ public class Room {
     private String id;
     private Long number;
     @DBRef
+    private Floor floor;
+    @DBRef
     private Collection<Device> devices;
 
 }

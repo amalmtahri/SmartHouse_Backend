@@ -34,8 +34,8 @@ class FloorControllerTest {
 
     @Test
     void getAll() throws Exception {
-        Floor floor1 = new Floor("12OZUEIEII", 1L,null);
-        Floor floor2 = new Floor("12OZUEIEII", 2L,null);
+        Floor floor1 = new Floor("12OZUEIEII", 1L,null,null);
+        Floor floor2 = new Floor("12OZUEIEII", 2L,null,null);
         List<Floor> floors = new ArrayList<>();
         floors.add(floor1);
         floors.add(floor2);
@@ -46,7 +46,7 @@ class FloorControllerTest {
 
     @Test
     void add() throws Exception {
-        Floor floor1 = new Floor("12OZUEIEII", 1L,null);
+        Floor floor1 = new Floor("12OZUEIEII", 1L,null,null);
         when(floorService.addFloor(floor1))
                 .thenReturn(floor1);
         mockMvc.perform(post("/api/floor/add")
@@ -57,7 +57,7 @@ class FloorControllerTest {
 
     @Test
     void getOne() throws Exception {
-        Floor floor1 = new Floor("12OZUEIEII", 1L,null);
+        Floor floor1 = new Floor("12OZUEIEII", 1L,null,null);
         when(floorService.getOne(floor1.getId())).thenReturn(floor1);
         mockMvc.perform(get("/api/floor/getOne/" + floor1.getId())
                         .contentType(MediaType.APPLICATION_JSON))
@@ -67,7 +67,7 @@ class FloorControllerTest {
 
     @Test
     void update() throws Exception {
-        Floor floor1 = new Floor("12OZUEIEII", 1L,null);
+        Floor floor1 = new Floor("12OZUEIEII", 1L,null,null);
         when(floorService.updateFloor(floor1))
                 .thenReturn(floor1);
         mockMvc.perform(put("/api/floor/update")

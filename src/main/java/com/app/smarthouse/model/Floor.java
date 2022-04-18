@@ -23,5 +23,7 @@ public class Floor {
     private Long number;
     @DBRef
     private Collection<Room> rooms;
+    @DBRef
+    private House house;
 
 }
