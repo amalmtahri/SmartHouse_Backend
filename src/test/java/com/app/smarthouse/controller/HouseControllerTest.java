@@ -71,7 +71,6 @@ class HouseControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(house1)))
                 .andExpect(status().isOk());
-
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.app.smarthouse.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.util.Collection;
 @Builder
 @Getter
 @Setter
+@AllArgsConstructor
 public class Room {
 
     @Id
