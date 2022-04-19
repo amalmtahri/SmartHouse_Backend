@@ -9,12 +9,15 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
@@ -46,10 +49,19 @@ class DeviceServiceTest {
 
     @Test
     void addDevice() {
+        Device device1 = new Device("12OZUEIEII", Status.ON,"Lamp",null);
+        Mockito.lenient().when(deviceRepository.save(device1)).thenReturn(device1);
+        Device device = deviceService.addDevice(device1);
+        assertThat(device).isEqualTo(device1);
     }
 
     @Test
     void getOne() {
+        Device device1 = new Device("12OZUEIEII", Status.ON,"Lamp",null);
+        Mockito.lenient().when(deviceRepository.findById(device1.getId())).thenReturn(Optional.of(device1));
+        Device device = deviceService.getOne(device1.getId());
+        assertThat(device).isEqualTo(device1);
+
     }
 
     @Test
