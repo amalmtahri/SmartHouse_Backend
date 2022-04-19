@@ -66,9 +66,18 @@ class DeviceServiceTest {
 
     @Test
     void updateDevice() {
+        Device device1 = new Device("12OZUEIEII", Status.ON,"Lamp",null);
+        Mockito.lenient().when(deviceRepository.findById(device1.getId())).thenReturn(Optional.of(device1));
+        Mockito.lenient().when(deviceRepository.save(device1)).thenReturn(device1);
+        Device device = deviceService.updateDevice(device1);
+        assertThat(device).isEqualTo(device1);
+
     }
 
     @Test
     void deleteDevice() {
+        Device device1 = new Device("12OZUEIEII", Status.ON,"Lamp",null);
+        Mockito.lenient().when(deviceRepository.findById(device1.getId())).thenReturn(Optional.of(device1));
+        deviceService.deleteDevice(device1.getId());
     }
 }
