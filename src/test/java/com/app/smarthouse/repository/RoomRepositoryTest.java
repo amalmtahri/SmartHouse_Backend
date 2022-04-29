@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -44,4 +45,10 @@ class RoomRepositoryTest {
         assertThat(roomRepository.save(room2)).isEqualTo(room2);
     }
 
+    @Test
+    void findById() {
+        Room room2 = new Room("ZERT456",7L,null,null);
+        Mockito.when(roomRepository.findById(room2.getId())).thenReturn(Optional.of(room2));
+        assertThat(roomRepository.findById(room2.getId())).isNotNull();
+    }
 }
