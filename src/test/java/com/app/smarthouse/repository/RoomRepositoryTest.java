@@ -1,6 +1,7 @@
 package com.app.smarthouse.repository;
 
 import com.app.smarthouse.model.Floor;
+import com.app.smarthouse.model.House;
 import com.app.smarthouse.model.Room;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,6 +34,14 @@ class RoomRepositoryTest {
         rooms.add(room2);
         Mockito.when(roomRepository.findAll()).thenReturn(rooms);
         assertThat(roomRepository.findAll()).isNotNull();
+    }
+
+    @Test
+    void add() {
+        Room room2 = new Room("ZERT456",7L,null,null);
+        Mockito.when(roomRepository.save(room2))
+                .thenReturn(room2);
+        assertThat(roomRepository.save(room2)).isEqualTo(room2);
     }
 
 }
